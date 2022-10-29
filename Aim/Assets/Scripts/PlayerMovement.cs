@@ -19,10 +19,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpHeight;
 
     private CharacterController controller;
+    private Animation anim;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<Animation>();
     }
 
     private void Update()
@@ -73,21 +75,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void Idle()
     {
-
+       // anim.SetFloat("Speed", 0);
     }
     private void Walk()
     {
         moveSpeed = walkSpeed;
+     //   anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
     }
     private void Run()
     {
         moveSpeed = runSpeed;
+     //   anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
     }
     private void Jump()
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
 
     }
+
+   
 
 
 }
